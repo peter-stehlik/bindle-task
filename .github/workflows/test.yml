@@ -18,7 +18,8 @@ jobs:
     steps:
       # Step 1: Get your code
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
+
       
       # Step 2: Setup Node.js and cache npm dependencies
       - name: Setup Node.js
