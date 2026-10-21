@@ -9,6 +9,9 @@ on:
 
 # What to run
 jobs:
+  matrix:
+    uses: ./.github/workflows/matrix.yml
+
   test:
     runs-on: ubuntu-latest
     
@@ -17,16 +20,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      # Step 2: Setup Node.js
+      # Step 2: Setup Node.js and cache npm dependencies
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
       
       # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
       
       # Step 4: Run tests
-      #- name: Run tests
-      #  run: npm test
+      - name: Run tests
+        run: npm test
